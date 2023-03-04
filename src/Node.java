@@ -8,9 +8,11 @@ public class Node implements Serializable {
         this.p2 = p2;
     }
 
+
     Person p1;
     Relationship re;
     Person p2;
+    Cat cat;
 
     @Override
     public String toString() {

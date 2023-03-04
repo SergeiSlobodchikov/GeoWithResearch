@@ -12,9 +12,10 @@ public class Reserch {
         result = new ArrayList<>(); // создаем новый список результатов перед каждым поиском
         for (Node t : tree) {
             if (t.p1.getFirstName().equals(p.getFirstName()) && t.re == re) {
-                result.add(t.p2.getFirstName());
+                result.add(t.p2.getFirstName() );
             }
         }
+        result.add(" " + re.toString());
         return result;
     }
 

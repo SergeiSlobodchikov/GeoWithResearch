@@ -7,5 +7,8 @@ public enum Relationship {
     Grandchild,
     Aunt_Uncle,
     NEPHEW_NIECE,
-    UNKNOWN
+    UNKNOWN,
+    Cousin,
+    pet,
+    petOwner
 }

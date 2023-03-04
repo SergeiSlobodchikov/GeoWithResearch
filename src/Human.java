@@ -1,24 +1,36 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
 
-public class Human{
+public class Human extends Person {
+    public Human(String firstName, String lastName, Gender gender) {
+        super(firstName, lastName, gender);
+    }
 
-    private String firstName;
-    private String lastName;
-    private gender gender;
+    public Human(String firstName, String lastName) {
+        super(firstName, lastName);
+    }
 
+    public Human(String firstName, String lastName, LocalDate birthDate) {
+        super(firstName, lastName, birthDate);
+    }
 
-    public  Human(String firstName, String lastName, gender gender) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
+    public Human(String firstName) {
+        super(firstName);
     }
 
 
+    public String getFirstName() {
+        return this.firstName;
+    }
+
     public void openDoor(Cupboard cupboard) {
-        Cupboard door = new Cupboard();
-        if (!door.CupboardOr()) {
-            System.out.println(this.firstName + " открыл(а) дверь шкафа");
+        if (!cupboard.CupboardOr()) {
+            if (this.getGender() == Gender.male) {
+                System.out.println(this.getFirstName() + " открыл дверь шкафа");
+            } else if (this.getGender() == Gender.female) {
+                System.out.println(this.getFirstName() + " открыла дверь шкафа");
+            } else {
+                System.out.println(this.getFirstName() + " открыло дверь шкафа");
+            }
             cupboard.openDoor();
         } else {
             System.out.println("Дверь шкафа уже открыта");
@@ -26,35 +38,112 @@ public class Human{
     }
 
     public void closeDoor(Cupboard cupboard) {
-        Cupboard door = cupboard;
-        if (door.CupboardOr()) {
-            System.out.println(this.firstName + " закрыл(а) дверь шкафа");
+        if (cupboard.CupboardOr()) {
+            if (this.getGender() == Gender.male) {
+                System.out.println(this.getFirstName() + " закрыл дверь шкафа");
+            } else if (this.getGender() == Gender.female) {
+                System.out.println(this.getFirstName() + " закрыла дверь шкафа");
+            } else {
+                System.out.println(this.getFirstName() + " закрыло дверь шкафа");
+            }
             cupboard.closeDoor();
         } else {
-            System.out.println("Дверь шкафа уже закрыта");
+            System.out.println("Дверь шкафа закрыта, ну что красивый шкаф");
         }
     }
 
+
+    public void looked(Cupboard cupboard){
+        if (cupboard.CupboardOr()) {
+        if (this.getGender() == Gender.male) {
+            System.out.println(this.getFirstName() + " осмотрел шкаф и там находится " + cupboard.items() );
+        } else if (this.getGender() == Gender.female) {
+            System.out.println(this.getFirstName() + " осмотрела шкаф и там находится " + cupboard.items() );
+        } else {
+            System.out.println(this.getFirstName() + " осмотрело шкаф и там находится " + cupboard.items() );
+        }
+        } else {
+            System.out.println("Дверь шкафа закрыта, ну что красивый шкаф, жаль сквозь смотреть не могу");
+        }
+    }
     public void findItemInCupboard(String itemName, Cupboard cupboard) {
-        Cupboard door = cupboard;
-        if (door.CupboardOr()) {
-            if (door.items().contains(itemName)) {
-                System.out.println(this.firstName + " нашел(а) " + itemName + " в шкафу");
+        if (cupboard.CupboardOr()) {
+            if (cupboard.items().contains(itemName)) {
+                if (this.getGender() == Gender.male) {
+                    System.out.println(this.getFirstName() + " нашел " + itemName + " в шкафу");
+                } else if (this.getGender() == Gender.female) {
+                    System.out.println(this.getFirstName() + " нашла " + itemName + " в шкафу");
+                } else {
+                    System.out.println(this.getFirstName() + " нашло " + itemName + " в шкафу");
+                }
             } else {
-                System.out.println(itemName +" не найдены");
+                System.out.println(itemName + " нету этой вещи в шкафу");
             }
         } else {
             System.out.println("Сначала нужно открыть дверь шкафа");
         }
     }
 
-    public void callCat(String catName) {
-        System.out.println(this.firstName + " зовет котика " + catName);
+    public void addItem(String itemName, Cupboard cupboard) {
+        if (cupboard.CupboardOr()) {
+            if (this.getGender() == Gender.male) {
+                System.out.println("Положил в шкаф: " + itemName);
+            } else if (this.getGender() == Gender.female) {
+                System.out.println("Положила в шкаф: " + itemName);
+            } else {
+                System.out.println("Положило в шкаф: " + itemName);
+            }
+            cupboard.addItem(itemName);
+        } else {
+            System.out.println("Сначала нужно открыть дверь шкафа");
+        }
     }
 
-    public void petCat(Cat cat) {
-        System.out.println(this.firstName + " гладит котика " + cat.getName());
+    public void tookItem(String itemName, Cupboard cupboard) {
+        if (cupboard.CupboardOr()) {
+            if (this.getGender() == Gender.male) {
+                System.out.println("Забрал из шкафа: " + itemName);
+            } else if (this.getGender() == Gender.female) {
+                System.out.println("Забрала из шкафа: " + itemName);
+            } else {
+                System.out.println("Забрало из шкафа: " + itemName);
+            }
+            cupboard.removeItem(itemName);
+        } else {
+            System.out.println("Сначала нужно открыть дверь шкафа");
+        }
+    }
+
+    public void pettingCat(Cat cat) {
+        if (!cat.isHasCome()){
+            System.out.println(this.getFirstName() + " идет гладить кота " + cat.getName());
+            System.out.println("начал гладить");
+        } else {
+            System.out.println(cat.getName() + " рядом можно и погладить");
+        }
         cat.purr();
+    }
+
+
+    public void callCat(Cat cat) {
+        System.out.println(this.getFirstName() + " зовет кота " + cat.getName());
+        cat.respondToCall(this);
+    }
+
+    public void feedCat(Cat cat) {
+        if (!cat.isHasCome()){
+        System.out.println(this.getFirstName() + " зовет кота " + cat.getName());
+        } else {
+            System.out.println(this.getFirstName() + " кормит кота");
+        }
+        cat.eat();
+    }
+
+    public void playWithCat(Cat cat) {
+        if (!cat.isHasCome()){
+            System.out.println(this.getFirstName() + " зовет поиграть " + cat.getName());
+            cat.play();
+        } else System.out.println(this.getFirstName() + " играет с котом " + cat.getName());
     }
 }
 

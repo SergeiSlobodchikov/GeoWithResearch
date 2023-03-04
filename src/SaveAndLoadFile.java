@@ -36,13 +36,13 @@ public class SaveAndLoadFile {
                         geoTree.appendGrandparent(node.p2, node.p1);
                         break;
                     case Grandchild:
-                        geoTree.appendGrandparent(node.p1, node.p2);
+                        geoTree.appendGrandparent(node.p2, node.p1);
                         break;
                     case Aunt_Uncle:
                         geoTree.appendAunt_Uncle(node.p2, node.p1);
                         break;
                     case NEPHEW_NIECE:
-                        geoTree.appendAunt_Uncle(node.p1, node.p2);
+                        geoTree.appendAunt_Uncle(node.p2, node.p1);
                         break;
                 }
             }

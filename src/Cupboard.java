@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 class Cupboard {
     private boolean isDoorOpen;
@@ -40,7 +41,21 @@ class Cupboard {
     }
 
     public void removeItem(String itemName) {
-        System.out.println("Удалена вещь из шкафа: " + itemName);
+        items.remove(itemName);
+        System.out.println("Из шкафа убрана: " + itemName);
+    }
+
+    public static void cupboard(){
+        Human Sergei = new Human("Сергей", "Слободчиков", Gender.male);
+        Cupboard shkaf = new Cupboard();
+        shkaf.items().addAll(Arrays.asList("рубашка", "майка", "футболка", "джинсы"));
+        Sergei.openDoor(shkaf);
+        Sergei.addItem("Рубашка", shkaf);
+        Sergei.looked(shkaf);
+        Sergei.findItemInCupboard("футболка", shkaf);
+        Sergei.tookItem("футболка", shkaf) ;
+        Sergei.closeDoor(shkaf);
+        System.out.println();
     }
 }
 
