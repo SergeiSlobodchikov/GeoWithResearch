@@ -1,3 +1,5 @@
+package GeoTREE;
+
 import java.io.Serializable;
 
 public class Node implements Serializable {
@@ -12,7 +14,6 @@ public class Node implements Serializable {
     Person p1;
     Relationship re;
     Person p2;
-    Cat cat;
 
     @Override
     public String toString() {

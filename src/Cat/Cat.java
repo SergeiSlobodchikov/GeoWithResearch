@@ -1,4 +1,8 @@
+package Cat;
+
 import java.util.Random;
+import GeoTREE.Gender;
+
 
 public class Cat {
     private String name;
