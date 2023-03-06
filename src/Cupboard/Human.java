@@ -22,13 +22,6 @@ public class Human extends Person {
         super(firstName);
     }
 
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-
-
     public void openDoor(Cupboard cupboard) {
         if (!cupboard.CupboardOr()) {
             if (this.getGender() == Gender.male) {

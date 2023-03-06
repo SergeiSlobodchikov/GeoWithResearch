@@ -3,7 +3,6 @@ package GeoTREE;
 import java.time.LocalDate;
 import java.io.Serializable;
 
-
 public class Person implements Serializable {
 
     public String firstName;
@@ -31,6 +30,22 @@ public class Person implements Serializable {
         this.gender = gender;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -48,6 +63,3 @@ public class Person implements Serializable {
     }
 
 }
-
-
-

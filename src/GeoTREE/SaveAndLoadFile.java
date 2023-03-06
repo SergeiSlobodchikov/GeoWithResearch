@@ -16,46 +16,6 @@ public class SaveAndLoadFile {
         }
     }
 
-//        public GeoTree loadFromFile(String fileName) {
-//        try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
-//            ArrayList<Node> nodes = (ArrayList<Node>) ois.readObject();
-//            GeoTree geoTree = new GeoTree();
-//            for (Node node : nodes) {
-//                switch (node.re) {
-//                    case parent:
-//                        geoTree.appendChild(node.p2, node.p1);
-//                        break;
-//                    case children:
-//                        geoTree.appendChild(node.p1, node.p2);
-//                        break;
-//                    case Sibling:
-//                        geoTree.appendSibling(node.p2, node.p1);
-//                        break;
-//                    case Spouse:
-//                        geoTree.appendSpouse(node.p2, node.p1);
-//                        break;
-//                    case Grandparent:
-//                        geoTree.appendGrandparent(node.p2, node.p1);
-//                        break;
-//                    case Grandchild:
-//                        geoTree.appendGrandparent(node.p2, node.p1);
-//                        break;
-//                    case Aunt_Uncle:
-//                        geoTree.appendAunt_Uncle(node.p2, node.p1);
-//                        break;
-//                    case NEPHEW_NIECE:
-//                        geoTree.appendAunt_Uncle(node.p2, node.p1);
-//                        break;
-//                }
-//            }
-//            System.out.println("Данные загружены из файла " + fileName);
-//            return geoTree;
-//        } catch (IOException | ClassNotFoundException e) {
-//            System.out.println("Ошибка при загрузке данных из файла " + fileName);
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
     public GeoTree loadFromFile(String fileName) {
         try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
             ArrayList<Node> nodes = (ArrayList<Node>) ois.readObject();
@@ -64,9 +24,7 @@ public class SaveAndLoadFile {
                 Person person1 = node.p1;
                 Person person2 = node.p2;
                 Relationship relationship = node.re;
-                geoTree.addRelationship(person1 , person2, relationship  );
-
-
+                geoTree.addRelationship(person1, person2, relationship);
             }
             System.out.println("Данные загружены из файла " + fileName);
             return geoTree;

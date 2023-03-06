@@ -1,4 +1,4 @@
-package Cat;
+package Pet;
 
 import GeoTREE.Gender;
 import GeoTREE.Person;

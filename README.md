@@ -1,4 +1,4 @@
-##  [Package Cat](https://github.com/SergeiSlobodchikov/GeoWithResearch/tree/HomeWork/src/Cat) 
+##  [Package Pet](https://github.com/SergeiSlobodchikov/GeoWithResearch/tree/HomeWork/src/Cat) 
 - это пакет с классами взаимодействия человека с котом.
 
 ## [Package Cupboard](https://github.com/SergeiSlobodchikov/GeoWithResearch/tree/HomeWork/src/Cupboard) 
