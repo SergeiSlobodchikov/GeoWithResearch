@@ -21,13 +21,13 @@ public interface GenealogicalTree {
     ArrayList<Node> getTree();
 
     /**
-     * @param person   Человек которому мы хотим вызвать его конкретные генеалогические связи
+     * @param person   Человек которому мы хотим вызвать, его конкретные генеалогические связи
      * @param relationship   Вид генеалогической связи
      */
     ArrayList<String> findRelationships(Person person, Relationship relationship);
 
     /**
-     * @param  person   Человек которому мы хотим вызвать все его связи
+     * @param  person   Человек которому мы хотим вызвать, все его генеалогические связи
      */
     ArrayList<String> allRelationships(Person person);
 }

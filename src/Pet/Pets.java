@@ -68,5 +68,17 @@ public abstract class Pets {
         return petColor;
     }
 
-    public void eat(){};
+    public abstract void eat();
+    
+    boolean hasCome = false;
+    public boolean isHasCome() {
+        return hasCome;
+    }
+
+    public abstract void play();
+
+    public abstract void respondToCall(Human human);
+
+    public abstract void sleep();
+
 }

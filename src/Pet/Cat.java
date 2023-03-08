@@ -5,12 +5,12 @@ import java.util.Random;
 import GeoTREE.Gender;
 
 
-public class Cat extends Pets {
-    private boolean hasCome;
+public class Cat extends Pets implements Voice {
 
     public Cat(String name, int age, Gender gender, String petColor) {
         super(name, age, gender, petColor);
     }
+
 
     public Cat(String name, int age, Gender gender) {
         super(name, age, gender);
@@ -28,20 +28,17 @@ public class Cat extends Pets {
         super(name, age, petColor);
     }
 
-    public boolean isHasCome() {
-        return hasCome;
-    }
-
     public Random random = new Random();
 
 
     public void purr() {
         System.out.println(this.getName() + " мурлычет");
-        this.hasCome = true;
+        hasCome = true;
     }
 
-    public void askForFood() {
-        System.out.println(this.getName() + " просит еды");
+    public void askForFood(Human human) {
+        System.out.println(this.getName() + " просит еды у " + human.getFirstName());
+        hasCome = true;
     }
 
     public void leavesTheHuman() {
@@ -55,7 +52,7 @@ public class Cat extends Pets {
         System.out.println(this.getName() + " царапает мебель");
     }
 
-
+    @Override
     public void respondToCall(Human human) {
         int randomInt = random.nextInt(11);
         if (!hasCome) {
@@ -74,6 +71,7 @@ public class Cat extends Pets {
         }
     }
 
+    @Override
     public void eat() {
         int randomInt = random.nextInt(11);
         if (!hasCome) {
@@ -93,6 +91,13 @@ public class Cat extends Pets {
         }
     }
 
+    @Override
+    public void sleep() {
+        System.out.println("Решил поспать пошел на свободную кровать");
+        this.hasCome = false;
+    }
+
+    @Override
     public void play() {
         int randomInt = random.nextInt(11);
         if (!hasCome) {
@@ -109,20 +114,9 @@ public class Cat extends Pets {
         }
     }
 
-    public static void petCat() {
-        Human Sergei = new Human("Сергей", "Слободчиков", Gender.male);
-        Cat Tihan = new Cat("Тихан", 18, Gender.male);
-        Sergei.callCat(Tihan);
-        Sergei.callCat(Tihan);
-        Sergei.callCat(Tihan);
-        Sergei.playWithCat(Tihan);
-        Sergei.pettingCat(Tihan);
-        Tihan.askForFood();
-        Sergei.feedCat(Tihan);
-        Tihan.leavesTheHuman();
-        Tihan.scratchFurniture();
+    @Override
+    public void voicePet() {
+        System.out.println(this.getName() + " начал мяукать");
     }
-
-
 }
 
