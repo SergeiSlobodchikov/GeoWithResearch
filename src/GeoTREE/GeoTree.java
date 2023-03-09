@@ -1,9 +1,11 @@
 package GeoTREE;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GeoTree implements GenealogicalTree {
     private ArrayList<Node> tree = new ArrayList<>();
+    PersonComparator comparator = new PersonComparator();
 
     @Override
     public void addRelationship(Person person1, Person person2, Relationship relationship) {
@@ -20,8 +22,9 @@ public class GeoTree implements GenealogicalTree {
         for (Relationship relationship : Relationship.values()) {
             Relationship rel = relationship;
             for (Node node : tree) {
-                if (node.p1.equals(p1) && node.p2.equals(p2) && node.re == rel && p1 != p2) {
+                if (comparisonResult(node.p1, p1) && comparisonResult(node.p2, p2) && node.re == rel && p1 != p2) {
                     return true;
+
                 }
             }
         }
@@ -54,6 +57,21 @@ public class GeoTree implements GenealogicalTree {
             }
         }
         return result;
+    }
+
+    public void removeRelationship(Person person1, Person person2) {
+        Iterator<Node> iterator = tree.iterator();
+        while (iterator.hasNext()) {
+            Node node = iterator.next();
+            if (node.p1.equals(person1) && node.p2.equals(person2)) {
+                iterator.remove();
+            }
+        }
+    }
+
+    public boolean comparisonResult(Person p1, Person p2) {
+        int comparisonResult = comparator.compare(p1, p2);
+        return comparisonResult == 0;
     }
 
 }

@@ -26,7 +26,6 @@ public class SaveAndLoadFile {
                 Relationship relationship = node.re;
                 geoTree.addRelationship(person1, person2, relationship);
             }
-            System.out.println("Данные загружены из файла " + fileName);
             return geoTree;
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Ошибка при загрузке данных из файла " + fileName);

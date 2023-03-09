@@ -14,7 +14,7 @@ public interface GenealogicalTree {
     /**
      * @param p1      Человек 1
      * @param p2      Человек 2
-     * @apiNote Проверка есть ли какие-нибудь связи
+     * @implNote  Проверка есть ли какие-нибудь связи
      */
     boolean hasRelationship(Person p1, Person p2);
 

@@ -2,6 +2,7 @@ package GeoTREE;
 
 import java.time.LocalDate;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Person implements Serializable {
 
@@ -60,6 +61,13 @@ public class Person implements Serializable {
 
     public Gender getGender() {
         return gender;
+    }
+
+    public ArrayList<String> getPerson() {
+        ArrayList<String> person = new ArrayList<>();
+        person.add(this.firstName);
+        person.add(this.lastName);
+        return person;
     }
 
 }
