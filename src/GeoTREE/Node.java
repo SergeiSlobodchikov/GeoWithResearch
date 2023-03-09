@@ -10,7 +10,6 @@ public class Node implements Serializable {
         this.p2 = p2;
     }
 
-
     Person p1;
     Relationship re;
     Person p2;
@@ -19,5 +18,4 @@ public class Node implements Serializable {
     public String toString() {
         return String.format("<%s %s %s>", p1, re, p2);
     }
-
 }
