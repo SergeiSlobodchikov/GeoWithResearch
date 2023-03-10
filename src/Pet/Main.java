@@ -47,5 +47,16 @@ public class Main {
         Tihan.sleep();
         Warik.sleep();
         Vasya.sleep();
+        Sergei.addPetsToFeed(Tihan);
+        Sergei.addPetsToFeed(Warik);
+        Sergei.addPetsToFeed(Vasya);
+        System.out.println(Tihan.getHunger() + " "+ Tihan.getName());
+        System.out.println(Warik.getHunger() + " "+ Warik.getName());
+        System.out.println(Vasya.getHunger() + " "+ Vasya.getName());
+        Sergei.feedPets();
+        System.out.println(Tihan.getHunger() + " "+ Tihan.getName());
+        System.out.println(Warik.getHunger() + " "+ Warik.getName());
+        System.out.println(Vasya.getHunger() + " "+ Vasya.getName());
+
     }
 }

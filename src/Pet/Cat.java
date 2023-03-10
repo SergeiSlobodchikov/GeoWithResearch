@@ -37,19 +37,23 @@ public class Cat extends Pets implements Voice {
     }
 
     public void askForFood(Human human) {
-        System.out.println(this.getName() + " просит еды у " + human.getFirstName());
-        hasCome = true;
+        if (getHunger() < 40) {
+            System.out.println(this.getName() + " просит еды у " + human.getFirstName());
+            hasCome = true;
+        }
     }
 
     public void leavesTheHuman() {
         if (this.hasCome) {
             this.hasCome = false;
             System.out.println(this.getName() + " уходит в соседнюю комнату");
+            this.hunger -= 5;
         }
     }
 
     public void scratchFurniture() {
         System.out.println(this.getName() + " царапает мебель");
+        this.hunger -= 10;
     }
 
     @Override
@@ -59,6 +63,7 @@ public class Cat extends Pets implements Voice {
             if (randomInt % 2 == 0) {
                 System.out.println(this.getName() + " откликается на вызов и идет к " + human.getFirstName());
                 this.hasCome = true;
+
             } else {
                 System.out.println(this.getName() + " где-то лежит");
             }
@@ -69,32 +74,37 @@ public class Cat extends Pets implements Voice {
                 System.out.println(this.getName() + " удивленно смотрит так как рядом с вами");
             }
         }
+        this.hunger -= 5;
     }
 
     @Override
     public void eat() {
         int randomInt = random.nextInt(11);
         if (!hasCome) {
-            if (randomInt % 2 == 0) {
+            if (getHunger() < 40) {
                 System.out.println(this.getName() + " откликается на вызов и идет покушать");
                 this.hasCome = true;
                 System.out.println(this.getName() + " ест");
+                this.hunger = 100;
             } else {
                 System.out.println(this.getName() + " где-то лежит, голод еще не пришел");
             }
         } else {
-            if (randomInt % 2 == 0) {
+            if (getHunger() < 40) {
                 System.out.println(this.getName() + " ест");
+                this.hunger = 100;
             } else {
                 System.out.println("Он просто хотел чтобы миска была не пустой");
             }
         }
+        this.hunger -= 5;
     }
 
     @Override
     public void sleep() {
         System.out.println("Решил поспать пошел на свободную кровать");
         this.hasCome = false;
+        this.hunger -= 10;
     }
 
     @Override
@@ -104,13 +114,17 @@ public class Cat extends Pets implements Voice {
             if (randomInt % 2 == 0) {
                 System.out.println(this.getName() + " бежит играть видимо очень хочет поиграть");
                 this.hasCome = true;
+                this.hunger -= 20;
             } else {
                 System.out.println(this.getName() + " не откликается");
+                this.hunger -= 5;
             }
         } else {
             if (randomInt % 2 == 0) {
                 System.out.println(this.getName() + " играет c вами");
+                this.hunger -= 20;
             } else System.out.println("Сам с собой играйся!!!");
+            this.hunger -= 5;
         }
     }
 
@@ -118,5 +132,7 @@ public class Cat extends Pets implements Voice {
     public void voicePet() {
         System.out.println(this.getName() + " начал мяукать");
     }
+
+
 }
 

@@ -40,7 +40,7 @@ public class GeoTree implements GenealogicalTree {
     public ArrayList<String> findRelationships(Person p, Relationship re) {
         ArrayList<String> result = new ArrayList<>();
         for (Node node : tree) {
-            if (node.p1.equals(p) && node.re == re) {
+            if (comparisonResult(node.p1, p) && node.re == re) {
                 result.add(node.p2.getFirstName());
             }
         }
@@ -63,7 +63,7 @@ public class GeoTree implements GenealogicalTree {
         Iterator<Node> iterator = tree.iterator();
         while (iterator.hasNext()) {
             Node node = iterator.next();
-            if (node.p1.equals(person1) && node.p2.equals(person2)) {
+            if (comparisonResult(node.p1, person1) && comparisonResult(node.p2, person2)) {
                 iterator.remove();
             }
         }

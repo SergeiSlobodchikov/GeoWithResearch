@@ -40,33 +40,40 @@ public class Dog extends Pets implements Voice{
     }
 
     public void askForFood(Human human) {
-        System.out.println(this.getName() + " просит еды у " + human.getFirstName());
+        if (getHunger()< 40) {
+            System.out.println(this.getName() + " просит еды у " + human.getFirstName());
+        }
     }
 
     public void leavesTheHuman() {
         if (this.hasCome) {
             this.hasCome = false;
             System.out.println(this.getName() + " уходит в соседнюю комнату");
+            this.hunger -= 5;
         }
     }
 
     public void chewFurniture() {
         System.out.println(this.getName() + " грызет мебель");
+        this.hunger -= 10;
     }
 
     @Override
     public void eat() {
         int randomInt = random.nextInt(11);
         if (!hasCome) {
-            if (randomInt % 2 == 0) {
+            if (getHunger() < 40) {
                 System.out.println(this.getName() + " откликается на зов и идет покушать");
                 this.hasCome = true;
                 System.out.println("Ест");
+                this.hunger = 100;
             } else {
                 System.out.println(this.getName() + " что-то не идет, видимо поел в тихую");
+                this.hunger -= 5;
             }
         } else {
             System.out.println(this.getName() + " так как рядом сразу напал на корм");
+            this.hunger = 100;
         }
 
     }
@@ -75,6 +82,7 @@ public class Dog extends Pets implements Voice{
     public void sleep() {
         System.out.println("Решил поспать лег рядом с хозяином");
         this.hasCome = true;
+        this.hunger -= 20;
     }
 
     @Override
@@ -84,13 +92,16 @@ public class Dog extends Pets implements Voice{
             if (randomInt % 2 == 0) {
                 System.out.println(this.getName() + " бежит играть видимо очень хочет поиграть");
                 this.hasCome = true;
+                this.hunger -= 20;
             } else {
                 System.out.println(this.getName() + " зовет играть на улицу с мячиком");
                 System.out.println("Вы поиграли на улице и вернулись домой");
+                this.hunger -= 30;
             }
         } else {
             if (randomInt % 2 == 0) {
                 System.out.println(this.getName() + " играет c вами");
+                this.hunger -= 10;
             }
         }
     }
@@ -112,6 +123,7 @@ public class Dog extends Pets implements Voice{
                 System.out.println(this.getName() + " начинает вас лизать");
             }
         }
+        this.hunger -= 5;
     }
 
 

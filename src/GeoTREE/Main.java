@@ -36,16 +36,12 @@ public class Main {
         System.out.println();
         System.out.println(gt.allRelationships(irina));
         System.out.println(loadedTree.allRelationships(irina));
-        loadedTree.removeRelationship(irina,vasya);
-        System.out.println(loadedTree.allRelationships(irina));
         System.out.println(loadedTree.findRelationships(irina, Relationship.parent));
-
-        System.out.println();
-//        System.out.println(gt.allRelationships(irina));
         System.out.println(loadedTree.hasRelationship(irina, masha));
         System.out.println(loadedTree.allRelationships(irina));
         loadedTree.removeRelationship(irina,vasya);
         System.out.println(loadedTree.allRelationships(irina));
-        System.out.println(loadedTree.findRelationships(irina, Relationship.parent));
+        System.out.println();
+        System.out.println(loadedTree.findRelationships(irina, Relationship.children));
     }
 }

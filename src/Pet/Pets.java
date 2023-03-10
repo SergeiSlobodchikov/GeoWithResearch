@@ -81,4 +81,13 @@ public abstract class Pets {
 
     public abstract void sleep();
 
+    int hunger = 100;
+
+    public int getHunger() {;
+        return hunger;
+    }
+
+    public void setHunger(int hunger) {
+        this.hunger = hunger;
+    }
 }

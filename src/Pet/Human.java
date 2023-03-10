@@ -2,8 +2,9 @@ package Pet;
 
 import GeoTREE.Gender;
 import GeoTREE.Person;
-
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Human extends Person {
     private int whereHuman;
@@ -75,6 +76,25 @@ public class Human extends Person {
         guineaPig.beTaken(this);
     }
 
+    private ArrayList<Pets> petsToFeed = new ArrayList<>();
 
+    public void addPetsToFeed(Pets pets) {
+        petsToFeed.add(pets);
+    }
 
+    public void removeCatToFeed(Pets pets) {
+        petsToFeed.remove(pets);
+    }
+
+    public void feedPets() {
+        if (petsToFeed.size() == 0) {
+            System.out.println("Нет питомцев для кормления.");
+            return;
+        }
+        petsToFeed.sort(Comparator.comparing(Pets::getHunger));
+
+        for (Pets pets : petsToFeed) {
+            pets.eat();
+        }
+    }
 }
