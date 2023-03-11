@@ -77,7 +77,7 @@ public class Human extends Person {
     }
 
     private ArrayList<Pets> petsToFeed = new ArrayList<>();
-
+    
     public void addPetsToFeed(Pets pets) {
         petsToFeed.add(pets);
     }
@@ -91,8 +91,8 @@ public class Human extends Person {
             System.out.println("Нет питомцев для кормления.");
             return;
         }
-        petsToFeed.sort(Comparator.comparing(Pets::getHunger));
-
+//        petsToFeed.sort(Comparator.comparing(Pets::getHunger));
+        petsToFeed.sort(new ComparatorFood());
         for (Pets pets : petsToFeed) {
             pets.eat();
         }
